@@ -24,7 +24,7 @@ const getProfile = (profile) => {
 passport.use(new GoogleTokenStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-}, async (accessToken, refreshToken, profile, done) => {
+}, async (profile, done) => {
   try {
     const existingGoogleAccount = await User.findOne({ where: { googleId: profile.id } });
 
